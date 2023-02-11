@@ -1,13 +1,15 @@
 import java.util.ArrayList;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 //Ability to create contact
 public class Contact {
     public static void main(String[] args) {
-        ArrayList<AddContact> arrayList=new ArrayList<>();
-        Scanner s=new Scanner(System.in);
-        int counter=0;
-        String insertContacts;
+        ArrayList<AddContact> arrayList = new ArrayList<>();
+
+        Scanner s = new Scanner(System.in);
+        int counter = 0;
+        String insertContacts;//Yes or No
         while (true) {
             System.out.println("Do you want to insert contact details to address (Yes/No)");
             insertContacts = s.next();
@@ -32,15 +34,16 @@ public class Contact {
                 System.out.println("Enter zip code ");
                 a.setZip(s.nextInt());
 
-                arrayList.add(counter,a);
+                arrayList.add(counter, a);//(0,a(name,city, state))
 
-            } else if(insertContacts.equals("Exit")) {
+            } else if (insertContacts.equals("Exit")) {
                 break;
 
             }
         }
-        for (int i=0;i< arrayList.size();i++){
-            System.out.println("------------------Contact "+(i+1)+ "----------------");
+        //displaying details of 1st person
+        for (int i = 0; i < arrayList.size(); i++) {            //(index+1)
+            System.out.println("------------------Contact " + (i + 1) + "----------------");
             System.out.println(arrayList.get(i).getFirstName());
             System.out.println(arrayList.get(i).getLastName());
             System.out.println(arrayList.get(i).getCity());
@@ -50,71 +53,123 @@ public class Contact {
             System.out.println(arrayList.get(i).getPhoneNumber());
 
         }
-    }
+        System.out.println("Do you want to edit contact details ? If yes,type first name of person");
 
-}
-class AddContact{
-    private String firstName;
-    private String lastName;
-    private String  mail;
-    private String city;
-    private String state;
-    private int zip;
-    private long phoneNumber;
+        String editDetails = s.next();
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (editDetails.equals(arrayList.get(i).getFirstName())) {
+                System.out.println("set name");
+                arrayList.get(i).setFirstName(s.next());//first get the name then edit/set
 
-    public String getCity() {
-        return city;
-    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+            }
 
-    public String getFirstName() {
-        return firstName;
-    }
+        }
+        //updated list
+        for (int i = 0; i < arrayList.size(); i++) {
+            System.out.println("------------------Contact " + (i + 1) + "----------------");
+            System.out.println(arrayList.get(i).getFirstName());
+            System.out.println(arrayList.get(i).getLastName());
+            System.out.println(arrayList.get(i).getCity());
+            System.out.println(arrayList.get(i).getMail());
+            System.out.println(arrayList.get(i).getState());
+            System.out.println(arrayList.get(i).getZip());
+            System.out.println(arrayList.get(i).getPhoneNumber());
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+        }
+        String delete = s.next();
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (delete.equals(arrayList.get(i).getFirstName())) {
 
-    public String getLastName() {
-        return lastName;
-    }
+                arrayList.remove(i);
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+                //first get the name then edit/set
 
-    public String getMail() {
-        return mail;
-    }
 
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
+            }
 
-    public long getPhoneNumber() {
-        return phoneNumber;
-    }
+        }
+        for (int i = 0; i < arrayList.size(); i++) {            //(index+1)
+            System.out.println("------------------Contact " + (i + 1) + "----------------");
+            System.out.println(arrayList.get(i).getFirstName());
+            System.out.println(arrayList.get(i).getLastName());
+            System.out.println(arrayList.get(i).getCity());
+            System.out.println(arrayList.get(i).getMail());
+            System.out.println(arrayList.get(i).getState());
+            System.out.println(arrayList.get(i).getZip());
+            System.out.println(arrayList.get(i).getPhoneNumber());
 
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
-    public String getState() {
-        return state;
-    }
+        }
 
-    public void setState(String state) {
-        this.state = state;
-    }
 
-    public int getZip() {
-        return zip;
-    }
-
-    public void setZip(int zip) {
-        this.zip = zip;
     }
 }
+
+    class AddContact {
+        private String firstName;
+        private String lastName;
+        private String mail;
+        private String city;
+        private String state;
+        private int zip;
+        private long phoneNumber;
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public String setFirstName(String firstName) {
+            this.firstName = firstName;
+            return firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public String getMail() {
+            return mail;
+        }
+
+        public void setMail(String mail) {
+            this.mail = mail;
+        }
+
+        public long getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void setPhoneNumber(long phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+
+        public String getState() {
+            return state;
+        }
+
+        public void setState(String state) {
+            this.state = state;
+        }
+
+        public int getZip() {
+            return zip;
+        }
+
+        public void setZip(int zip) {
+            this.zip = zip;
+        }
+    }
+

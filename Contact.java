@@ -77,18 +77,7 @@ public class Contact {
             System.out.println(arrayList.get(i).getPhoneNumber());
 
         }
-        String delete = s.next();
-        for (int i = 0; i < arrayList.size(); i++) {
-            if (delete.equals(arrayList.get(i).getFirstName())) {
-
-                arrayList.remove(i);
-
-                //first get the name then edit/set
-
-
-            }
-
-        }
+       
         for (int i = 0; i < arrayList.size(); i++) {            //(index+1)
             System.out.println("------------------Contact " + (i + 1) + "----------------");
             System.out.println(arrayList.get(i).getFirstName());
@@ -99,10 +88,7 @@ public class Contact {
             System.out.println(arrayList.get(i).getZip());
             System.out.println(arrayList.get(i).getPhoneNumber());
 
-
         }
-
-
     }
 }
 

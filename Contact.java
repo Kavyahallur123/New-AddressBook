@@ -1,25 +1,55 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 //Ability to create contact
 public class Contact {
     public static void main(String[] args) {
+        ArrayList<AddContact> arrayList=new ArrayList<>();
         Scanner s=new Scanner(System.in);
-        System.out.println("Enter first name ");
-        String firstName=s.next();
-        System.out.println("Enter last name ");
-        String lastName=s.next();
-        System.out.println("Enter  mail ");
-        String mail=s.next();
-        System.out.println("Enter city name ");
-        String city=s.next();
-        System.out.println("Enter state name ");
-        String state=s.next();
-        System.out.println("Enter phone number ");
-        long phoneNumber=s.nextInt();
-        System.out.println("Enter zip code ");
-        int  zip=s.nextInt();
+        int counter=0;
+        String insertContacts;
+        while (true) {
+            System.out.println("Do you want to insert contact details to address (Yes/No)");
+            insertContacts = s.next();
+
+            if (insertContacts.equals("Yes")) {
+                AddContact a = new AddContact();
 
 
+                System.out.println("Enter first name ");
+                a.setFirstName(s.next());
+
+                System.out.println("Enter last name ");
+                a.setLastName(s.next());
+                System.out.println("Enter  mail ");
+                a.setMail(s.next());
+                System.out.println("Enter city name ");
+                a.setCity(s.next());
+                System.out.println("Enter state name ");
+                a.setState(s.next());
+                System.out.println("Enter phone number ");
+                a.setPhoneNumber(s.nextLong());
+                System.out.println("Enter zip code ");
+                a.setZip(s.nextInt());
+
+                arrayList.add(counter,a);
+
+            } else if(insertContacts.equals("Exit")) {
+                break;
+
+            }
+        }
+        for (int i=0;i< arrayList.size();i++){
+            System.out.println("------------------Contact "+(i+1)+ "----------------");
+            System.out.println(arrayList.get(i).getFirstName());
+            System.out.println(arrayList.get(i).getLastName());
+            System.out.println(arrayList.get(i).getCity());
+            System.out.println(arrayList.get(i).getMail());
+            System.out.println(arrayList.get(i).getState());
+            System.out.println(arrayList.get(i).getZip());
+            System.out.println(arrayList.get(i).getPhoneNumber());
+
+        }
     }
 
 }
